@@ -1,0 +1,775 @@
+Lol<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrustVault - Add Document</title>
+
+    <style>
+        :root {
+            --navy: #17263a;
+            --navy-dark: #0e1a2a;
+            --navy-soft: #34465b;
+
+            --ivory: #f7f4ea;
+            --ivory-light: #fcfaf3;
+
+            --gold: #c8a45d;
+            --gold-light: #e4cf9c;
+
+            --text: #1a293b;
+            --text-soft: #667384;
+            --muted: #8b95a0;
+
+            --border: rgba(23, 38, 58, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--ivory);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            width: 240px;
+            height: 100vh;
+
+            background: var(--navy);
+            color: white;
+
+            padding: 28px 18px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 0 10px;
+            margin-bottom: 42px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            background: var(--gold);
+            color: var(--navy-dark);
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .logo-name {
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            padding: 12px 14px;
+            border-radius: 10px;
+
+            color: #dce3eb;
+            text-decoration: none;
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+        .menu a:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        .menu a.active {
+            background: rgba(200,164,93,0.18);
+            color: var(--gold-light);
+        }
+
+        .menu-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 240px;
+            min-height: 100vh;
+
+            padding: 35px 45px;
+        }
+
+        .page-header {
+            margin-bottom: 28px;
+        }
+
+        .page-header h1 {
+            font-size: 31px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            color: var(--text-soft);
+            font-size: 13px;
+        }
+
+        /* FORM CARD */
+
+        .form-card {
+            max-width: 720px;
+
+            background: var(--ivory-light);
+
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            padding: 30px;
+
+            box-shadow: 0 10px 30px rgba(23,38,58,0.06);
+        }
+
+        /* UPLOAD */
+
+        .upload-area {
+            display: block;
+
+            border: 2px dashed rgba(200,164,93,0.65);
+
+            border-radius: 15px;
+
+            padding: 42px 25px;
+
+            text-align: center;
+
+            background: rgba(200,164,93,0.05);
+
+            margin-bottom: 28px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .upload-area:hover {
+            background: rgba(200,164,93,0.10);
+        }
+
+        .upload-icon {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 14px;
+
+            border-radius: 14px;
+
+            background: rgba(200,164,93,0.16);
+            color: var(--gold);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .upload-area h3 {
+            color: var(--navy);
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .upload-area p {
+            color: var(--text-soft);
+            font-size: 12px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .selected-file {
+            margin-top: 14px;
+
+            color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* FORM */
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+
+            color: var(--navy);
+
+            font-size: 13px;
+            font-weight: 650;
+
+            margin-bottom: 7px;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: white;
+
+            padding: 12px 14px;
+
+            color: var(--text);
+
+            font-family: inherit;
+            font-size: 13px;
+
+            outline: none;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            border-color: var(--gold);
+
+            box-shadow:
+                0 0 0 3px rgba(200,164,93,0.12);
+        }
+
+        .field textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+
+            margin-top: 28px;
+        }
+
+        .cancel-btn,
+        .save-btn {
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .cancel-btn {
+            background: transparent;
+
+            color: var(--text-soft);
+
+            border: 1px solid var(--border);
+        }
+
+        .cancel-btn:hover {
+            background: rgba(23,38,58,0.04);
+        }
+
+        .save-btn {
+            border: none;
+
+            background: var(--navy);
+            color: white;
+        }
+
+        .save-btn:hover {
+            background: var(--navy-dark);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                position: static;
+
+                width: 100%;
+                height: auto;
+            }
+
+            .menu {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .main {
+                margin-left: 0;
+
+                padding: 25px 20px;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .cancel-btn,
+            .save-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ✦
+            </div>
+
+            <div class="logo-name">
+                TrustVault
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                <span class="menu-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="documents.html">
+                <span class="menu-icon">▣</span>
+                Documents
+            </a>
+
+            <a href="add-documents.html" class="active">
+                <span class="menu-icon">＋</span>
+                Add Documents
+            </a>
+
+            <a href="search.html">
+                <span class="menu-icon">⌕</span>
+                Search
+            </a>
+
+            <a href="reminders.html">
+                <span class="menu-icon">◷</span>
+                Reminders
+            </a>
+
+            <a href="ai-assistant.html">
+                <span class="menu-icon">✦</span>
+                AI Assistant
+            </a>
+
+            <a href="profile.html">
+                <span class="menu-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <h1>
+                Add Document
+            </h1>
+
+            <p>
+                Add an important document to your TrustVault.
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <!-- FILE UPLOAD -->
+
+            <label
+                for="fileInput"
+                class="upload-area">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>
+                    Choose a document
+                </h3>
+
+                <p>
+                    Click here to select a file from your device
+                </p>
+
+                <div
+                    class="selected-file"
+                    id="selectedFile">
+                </div>
+
+            </label>
+
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+            >
+
+
+            <!-- DOCUMENT FORM -->
+
+            <form id="documentForm">
+
+                <div class="field">
+
+                    <label for="documentName">
+                        Document Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="documentName"
+                        placeholder="Example: Aadhaar Card"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+<select id="category">
+
+    <option value="identity">
+        Identity
+    </option>
+
+    <option value="medical">
+        Medical Reports
+    </option>
+
+    <option value="education">
+        Education
+    </option>
+
+    <option value="personal">
+        Personal
+    </option>
+
+    <option value="other">
+        Other
+    </option>
+
+</select>                </div>
+
+
+               <div class="field">
+
+    <label>
+        Document Expiry
+    </label>
+
+    <label
+        style="
+            display:flex;
+            align-items:center;
+            gap:10px;
+            cursor:pointer;
+            font-weight:500;
+        ">
+
+        <input
+            type="checkbox"
+            id="hasExpiry"
+            style="width:auto;"
+        >
+
+        This document has an expiry date
+
+    </label>
+
+</div>
+
+
+<div
+    class="field"
+    id="expiryDateField"
+    style="display:none;">
+
+    <label for="expiryDate">
+        Document Expiry Date
+    </label>
+
+    <input
+        type="date"
+        id="expiryDate"
+    >
+
+</div>
+
+                <div class="field">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Add any useful information about this document..."></textarea>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <a
+                        href="documents.html"
+                        class="cancel-btn">
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+                        Save Document
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* FILE NAME */
+
+        const fileInput =
+            document.getElementById("fileInput");
+
+        const selectedFile =
+            document.getElementById("selectedFile");
+
+
+        fileInput.addEventListener(
+            "change",
+            function () {
+
+                if (fileInput.files.length > 0) {
+
+                    selectedFile.textContent =
+                        "Selected: " +
+                        fileInput.files[0].name;
+
+                } else {
+
+                    selectedFile.textContent = "";
+
+                }
+
+            }
+        );
+
+
+       /* EXPIRY TOGGLE */
+
+const hasExpiry =
+    document.getElementById("hasExpiry");
+
+const expiryDateField =
+    document.getElementById("expiryDateField");
+
+const expiryDate =
+    document.getElementById("expiryDate");
+
+
+hasExpiry.addEventListener(
+    "change",
+    function () {
+
+        if (hasExpiry.checked) {
+
+            expiryDateField.style.display =
+                "block";
+
+        } else {
+
+            expiryDateField.style.display =
+                "none";
+
+            expiryDate.value = "";
+
+        }
+
+    }
+);
+
+
+
+/* SAVE DOCUMENT */
+
+document
+    .getElementById("documentForm")
+    .addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            const documentName =
+                document
+                .getElementById("documentName")
+                .value
+                .trim();
+
+
+            const category =
+                document
+                .getElementById("category")
+                .value;
+
+
+            /*
+             * Only save an expiry date
+             * when the user selected
+             * that the document has one.
+             */
+
+            const documentExpiryDate =
+                hasExpiry.checked
+                    ? expiryDate.value
+                    : "";
+
+
+            const notes =
+                document
+                .getElementById("notes")
+                .value
+                .trim();
+
+
+            const fileName =
+                fileInput.files.length > 0
+                    ? fileInput.files[0].name
+                    : "";
+
+
+            const documentData = {
+
+                id: Date.now(),
+
+                name: documentName,
+
+                category: category,
+
+                expiryDate:
+                    documentExpiryDate,
+
+                notes: notes,
+
+                fileName: fileName
+
+            };
+
+
+            let documents =
+                JSON.parse(
+                    localStorage.getItem(
+                        "trustVaultDocuments"
+                    )
+                ) || [];
+
+
+            documents.push(
+                documentData
+            );
+
+
+            localStorage.setItem(
+                "trustVaultDocuments",
+                JSON.stringify(documents)
+            );
+
+
+            alert(
+                "Document added successfully!"
+            );
+
+
+            window.location.href =
+                "documents.html";
+
+        }
+    );
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TrustVault | Scan Document</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+
+            <div class="brand-mark">
+                ✓
+            </div>
+
+            <div class="brand-text">
+                Trust<span>Vault</span>
+            </div>
+
+        </a>
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-heading">MAIN</p>
+
+            <a href="dashboard.html" class="nav-link">
+                <span class="nav-symbol">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="documents.html" class="nav-link">
+                <span class="nav-symbol">▦</span>
+                My Documents
+            </a>
+
+            <a href="search.html" class="nav-link">
+                <span class="nav-symbol">⌕</span>
+                Search
+            </a>
+
+            <p class="nav-heading tools-heading">TOOLS</p>
+
+            <a href="add-documents.html" class="nav-link">
+                <span class="nav-symbol">＋</span>
+                Add Document
+            </a>
+
+            <a href="scan.html" class="nav-link active">
+                <span class="nav-symbol">▣</span>
+                Scan & OCR
+            </a>
+
+            <a href="ai-assistant.html" class="nav-link">
+                <span class="nav-symbol">✦</span>
+                AI Assistant
+            </a>
+
+            <a href="reminders.html" class="nav-link">
+                <span class="nav-symbol">♢</span>
+                Reminders
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="profile.html" class="nav-link">
+                <span class="nav-symbol">◯</span>
+                Profile
+            </a>
+
+            <a href="../index.html" class="nav-link logout-link">
+                <span class="nav-symbol">↪</span>
+                Sign out
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-topbar">
+
+            <div>
+
+                <p class="dashboard-overline">
+                    DOCUMENT TOOLS
+                </p>
+
+                <h1>
+                    Scan <span>& OCR.</span>
+                </h1>
+
+            </div>
+
+        </header>
+
+
+        <section class="ai-intro-card">
+
+            <div class="ai-intro-icon">
+                ▣
+            </div>
+
+            <div>
+
+                <p>
+                    TRUSTVAULT SCANNER
+                </p>
+
+                <h2>
+                    Scan and extract text easily.
+                </h2>
+
+                <span>
+                    Upload a document image and
+                    extract its text using OCR.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <p>
+                        SCAN DOCUMENT
+                    </p>
+
+                    <h2>
+                        Choose an image
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <label
+                    for="documentImage"
+                    class="quick-action"
+                    style="cursor:pointer;">
+
+                    <div class="action-icon upload-icon">
+                        ↑
+                    </div>
+
+                    <div class="action-text">
+
+                        <strong>
+                            Upload document image
+                        </strong>
+
+                        <small>
+                            JPG, JPEG or PNG
+                        </small>
+
+                    </div>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <input
+                type="file"
+                id="documentImage"
+                accept="image/*"
+                hidden>
+
+
+            <div
+                id="previewArea"
+                style="margin-top:25px;">
+
+            </div>
+
+        </section>
+
+
+        <section
+            class="dashboard-section"
+            id="ocrSection"
+            style="display:none;">
+
+            <div class="section-title">
+
+                <div>
+
+                    <p>
+                        OCR RESULT
+                    </p>
+
+                    <h2>
+                        Extracted text
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <textarea
+                id="ocrText"
+                rows="12"
+                placeholder="Extracted text will appear here..."
+                style="width:100%; padding:18px; border-radius:12px;">
+
+            </textarea>
+	<br>
+
+<button
+    type="button"
+    id="savePdfButton"
+    class="dashboard-primary-button">
+
+    📄 Save Image as PDF
+
+</button>
+
+        </section>
+
+
+        <footer class="dashboard-footer">
+
+            <span>
+                TrustVault
+            </span>
+
+            <span>•</span>
+
+            <span>
+                Your documents. Your space. Your trust.
+            </span>
+
+        </footer>
+
+    </main>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="../js/scan.js"></script>
+    
+</body>
+
+</html>

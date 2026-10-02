@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>TrustVault - Reminders</title>
+
+    <style>
+
+        :root {
+
+            --navy: #17263a;
+            --navy-dark: #0e1a2a;
+
+            --ivory: #f7f4ea;
+            --ivory-light: #fcfaf3;
+
+            --gold: #c8a45d;
+            --gold-light: #e4cf9c;
+
+            --text: #1a293b;
+            --text-soft: #667384;
+
+            --border: rgba(23, 38, 58, 0.12);
+
+            --green: #557a5b;
+            --red: #a95b55;
+
+        }
+
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        body {
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: var(--ivory);
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+        }
+
+
+        /* SIDEBAR */
+
+        .sidebar {
+
+            position: fixed;
+
+            left: 0;
+            top: 0;
+
+            width: 240px;
+            height: 100vh;
+
+            background: var(--navy);
+
+            padding: 28px 18px;
+
+            color: white;
+
+        }
+
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            padding: 0 10px;
+
+            margin-bottom: 42px;
+
+        }
+
+
+        .logo-icon {
+
+            width: 40px;
+            height: 40px;
+
+            background: var(--gold);
+
+            color: var(--navy-dark);
+
+            border-radius: 11px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            font-weight: 800;
+
+        }
+
+
+        .logo-name {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+        }
+
+
+        .menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 7px;
+
+        }
+
+
+        .menu a {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            color: #dce3eb;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+        }
+
+
+        .menu a:hover {
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color: white;
+
+        }
+
+
+        .menu a.active {
+
+            background:
+                rgba(200,164,93,0.18);
+
+            color: var(--gold-light);
+
+        }
+
+
+        .menu-icon {
+
+            width: 20px;
+
+            text-align: center;
+
+        }
+
+
+        /* MAIN */
+
+        .main {
+
+            margin-left: 240px;
+
+            min-height: 100vh;
+
+            padding: 35px 45px;
+
+        }
+
+
+        .page-header {
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .page-header h1 {
+
+            font-size: 31px;
+
+            color: var(--navy);
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .page-header p {
+
+            color: var(--text-soft);
+
+            font-size: 13px;
+
+        }
+
+
+        /* SUMMARY */
+
+        .summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .summary-card {
+
+            background: var(--ivory-light);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+        }
+
+
+        .summary-icon {
+
+            font-size: 20px;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .summary-number {
+
+            font-size: 26px;
+
+            font-weight: 750;
+
+            color: var(--navy);
+
+        }
+
+
+        .summary-label {
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+            margin-top: 3px;
+
+        }
+
+
+        /* TITLE */
+
+        .section-title {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .section-title h2 {
+
+            font-size: 19px;
+
+            color: var(--navy);
+
+        }
+
+
+        /* REMINDER CARDS */
+
+        .reminders {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        .reminder-card {
+
+            background: var(--ivory-light);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 15px;
+
+            padding: 18px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .document-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .document-icon {
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 11px;
+
+            background:
+                rgba(200,164,93,0.16);
+
+            color: var(--gold);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+        }
+
+
+        .document-info h3 {
+
+            color: var(--navy);
+
+            font-size: 15px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .document-info p {
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+
+        }
+
+
+        .expiry {
+
+            text-align: right;
+
+        }
+
+
+        .expiry-date {
+
+            color: var(--navy);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .status.active {
+
+            background:
+                rgba(85,122,91,0.12);
+
+            color: var(--green);
+
+        }
+
+
+        .status.soon {
+
+            background:
+                rgba(200,164,93,0.16);
+
+            color: #9a792e;
+
+        }
+
+
+        .status.expired {
+
+            background:
+                rgba(169,91,85,0.12);
+
+            color: var(--red);
+
+        }
+
+
+        /* EMPTY */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 65px 20px;
+
+            color: var(--text-soft);
+
+        }
+
+
+        .empty-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .empty h3 {
+
+            color: var(--navy);
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .empty p {
+
+            font-size: 13px;
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .summary {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+
+                position: static;
+
+                width: 100%;
+
+                height: auto;
+
+            }
+
+
+            .menu {
+
+                flex-direction: row;
+
+                overflow-x: auto;
+
+            }
+
+
+            .main {
+
+                margin-left: 0;
+
+                padding: 25px 20px;
+
+            }
+
+
+            .reminder-card {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .expiry {
+
+                text-align: left;
+
+                padding-left: 60px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                ✦
+            </div>
+
+            <div class="logo-name">
+                TrustVault
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                <span class="menu-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="documents.html">
+                <span class="menu-icon">▣</span>
+                Documents
+            </a>
+
+            <a href="add-documents.html">
+                <span class="menu-icon">＋</span>
+                Add Documents
+            </a>
+
+            <a href="search.html">
+                <span class="menu-icon">⌕</span>
+                Search
+            </a>
+
+            <a
+                href="reminders.html"
+                class="active">
+
+                <span class="menu-icon">◷</span>
+                Reminders
+
+            </a>
+
+            <a href="ai-assistant.html">
+                <span class="menu-icon">✦</span>
+                AI Assistant
+            </a>
+
+            <a href="profile.html">
+                <span class="menu-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="page-header">
+
+            <h1>
+                Reminders
+            </h1>
+
+            <p>
+                Stay ahead of your document expiry dates.
+            </p>
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary">
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    🔔
+                </div>
+
+                <div
+                    class="summary-number"
+                    id="soonCount">
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Expiring soon
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ✓
+                </div>
+
+                <div
+                    class="summary-number"
+                    id="activeCount">
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Active
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    !
+                </div>
+
+                <div
+                    class="summary-number"
+                    id="expiredCount">
+                    0
+                </div>
+
+                <div class="summary-label">
+                    Expired
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="section-title">
+
+            <h2>
+                Document Expiry
+            </h2>
+
+        </div>
+
+
+        <!-- REMINDERS -->
+
+        <div
+            class="reminders"
+            id="remindersContainer">
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div
+            class="empty"
+            id="emptyMessage"
+            style="display:none;">
+
+            <div class="empty-icon">
+                ✓
+            </div>
+
+            <h3>
+                No expiry reminders
+            </h3>
+
+            <p>
+                Add documents with expiry dates to see reminders here.
+            </p>
+
+        </div>
+
+    </main>
+<script>
+
+        /* GET SAVED DOCUMENTS */
+
+        function getDocuments() {
+
+            const saved =
+                localStorage.getItem(
+                    "trustVaultDocuments"
+                );
+
+            if (!saved) {
+                return [];
+            }
+
+            try {
+
+                return JSON.parse(saved);
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        /* FORMAT DATE */
+
+        function formatDate(dateString) {
+
+            if (!dateString) {
+
+                return "No expiry date";
+
+            }
+
+            const date =
+                new Date(
+                    dateString + "T00:00:00"
+                );
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* SHOW REMINDERS */
+
+        function showReminders() {
+
+            const container =
+                document.getElementById(
+                    "remindersContainer"
+                );
+
+            const empty =
+                document.getElementById(
+                    "emptyMessage"
+                );
+
+            const documents =
+                getDocuments();
+
+            container.innerHTML = "";
+
+            let activeCount = 0;
+            let soonCount = 0;
+            let expiredCount = 0;
+
+
+            documents.forEach(function(doc) {
+
+                /*
+                 * Documents without an expiry date
+                 * are NOT shown in reminders.
+                 */
+
+                if (!doc.expiryDate) {
+
+                    return;
+
+                }
+
+
+                const today =
+                    new Date();
+
+                today.setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                );
+
+
+                const expiry =
+                    new Date(
+                        doc.expiryDate +
+                        "T00:00:00"
+                    );
+
+
+                const difference =
+                    expiry - today;
+
+
+                const days =
+                    Math.ceil(
+                        difference /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+
+                let statusText;
+                let statusClass;
+
+
+                if (days < 0) {
+
+                    statusText =
+                        "Expired";
+
+                    statusClass =
+                        "expired";
+
+                    expiredCount++;
+
+                }
+
+                else if (days <= 90) {
+
+                    statusText =
+                        "Expiring soon";
+
+                    statusClass =
+                        "soon";
+
+                    soonCount++;
+
+                }
+
+                else {
+
+                    statusText =
+                        "Active";
+
+                    statusClass =
+                        "active";
+
+                    activeCount++;
+
+                }
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+                card.className =
+                    "reminder-card";
+
+
+                card.innerHTML = `
+
+                    <div class="document-info">
+
+                        <div class="document-icon">
+                            📄
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                ${escapeHTML(
+                                    doc.name
+                                )}
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(
+                                    categoryName(
+                                        doc.category
+                                    )
+                                )}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="expiry">
+
+                        <div class="expiry-date">
+
+                            ${formatDate(
+                                doc.expiryDate
+                            )}
+
+                        </div>
+
+                        <span
+                            class="status ${statusClass}">
+
+                            ${statusText}
+
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+
+            updateCounts(
+                activeCount,
+                soonCount,
+                expiredCount
+            );
+
+
+            if (
+                container.children.length === 0
+            ) {
+
+                empty.style.display =
+                    "block";
+
+            } else {
+
+                empty.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        /* UPDATE COUNTS */
+
+        function updateCounts(
+            active,
+            soon,
+            expired
+        ) {
+
+            document.getElementById(
+                "activeCount"
+            ).textContent = active;
+
+
+            document.getElementById(
+                "soonCount"
+            ).textContent = soon;
+
+
+            document.getElementById(
+                "expiredCount"
+            ).textContent = expired;
+
+        }
+
+
+        /* CATEGORY NAME */
+
+        function categoryName(category) {
+
+            const names = {
+
+                identity:
+                    "Identity Document",
+
+                medical:
+                    "Medical Report",
+
+                education:
+                    "Education Document",
+
+                personal:
+                    "Personal Document",
+
+                other:
+                    "Other Document"
+
+            };
+
+
+            return (
+                names[category] ||
+                "Document"
+            );
+
+        }
+
+
+        /* SECURITY */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                text || "";
+
+            return div.innerHTML;
+
+        }
+
+
+        /* START */
+
+        showReminders();
+
+    </script>
+
+</body>
+
+</html>

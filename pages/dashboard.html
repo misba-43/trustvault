@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>TrustVault | Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+    <div class="dashboard-glow glow-one"></div>
+    <div class="dashboard-glow glow-two"></div>
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <a
+            href="dashboard.html"
+            class="sidebar-brand">
+
+            <div class="brand-mark">
+                <span>✓</span>
+            </div>
+
+            <div class="brand-text">
+                Trust<span>Vault</span>
+            </div>
+
+        </a>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-heading">
+                MAIN
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-link active">
+
+                <span class="nav-symbol">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="documents.html"
+                class="nav-link">
+
+                <span class="nav-symbol">▦</span>
+
+                <span>My Documents</span>
+
+            </a>
+
+
+            <a
+                href="search.html"
+                class="nav-link">
+
+                <span class="nav-symbol">⌕</span>
+
+                <span>Search</span>
+
+            </a>
+
+
+            <p class="nav-heading tools-heading">
+                TOOLS
+            </p>
+
+
+            <a
+                href="add-documents.html"
+                class="nav-link">
+
+                <span class="nav-symbol">＋</span>
+
+                <span>Add Document</span>
+
+            </a>
+
+
+            <a
+                href="scan.html"
+                class="nav-link">
+
+                <span class="nav-symbol">▣</span>
+
+                <span>Scan & OCR</span>
+
+            </a>
+
+
+            <a
+                href="ai-assistant.html"
+                class="nav-link">
+
+                <span class="nav-symbol">✦</span>
+
+                <span>AI Assistant</span>
+
+            </a>
+
+
+            <a
+                href="reminders.html"
+                class="nav-link">
+
+                <span class="nav-symbol">♢</span>
+
+                <span>Reminders</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="profile.html"
+                class="nav-link">
+
+                <span class="nav-symbol">◯</span>
+
+                <span>Profile</span>
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                class="nav-link logout-link"
+                onclick="logout()">
+
+                <span class="nav-symbol">↪</span>
+
+                <span>Sign out</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOP BAR -->
+
+        <header class="dashboard-topbar">
+
+            <div>
+
+                <p class="dashboard-overline">
+                    YOUR PERSONAL VAULT
+                </p>
+
+                <h1>
+                    Good morning,
+                    <span id="dashboardUserName">
+                        there.
+                    </span>
+                </h1>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    onclick="openReminders()">
+
+                    ♢
+
+                    <span id="notificationDot"></span>
+
+                </button>
+
+
+                <a
+                    href="profile.html"
+                    class="profile-preview">
+
+                    <div
+                        class="profile-avatar"
+                        id="dashboardAvatar">
+
+                        U
+
+                    </div>
+
+
+                    <div class="profile-preview-text">
+
+                        <strong id="dashboardProfileName">
+                            User
+                        </strong>
+
+                        <small id="dashboardProfileEmail">
+                            Personal account
+                        </small>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+
+        <section class="dashboard-welcome">
+
+            <div class="welcome-content">
+
+                <p class="welcome-overline">
+                    WELCOME TO YOUR VAULT
+                </p>
+
+
+                <h2>
+
+                    Your documents,
+                    <span>
+                        organized beautifully.
+                    </span>
+
+                </h2>
+
+
+                <p class="welcome-description">
+
+                    Keep your important documents together,
+                    organized and easy to access whenever
+                    you need them.
+
+                </p>
+
+
+                <a
+                    href="add-documents.html"
+                    class="dashboard-primary-button">
+
+                    <span>＋</span>
+
+                    Add document
+
+                </a>
+
+            </div>
+
+
+            <div class="vault-decoration">
+
+                <div class="vault-ring ring-one"></div>
+
+                <div class="vault-ring ring-two"></div>
+
+                <div class="vault-symbol">
+                    ✓
+                </div>
+
+                <span class="orbit-star star-one">
+                    ✦
+                </span>
+
+                <span class="orbit-star star-two">
+                    ✦
+                </span>
+
+                <span class="orbit-star star-three">
+                    ·
+                </span>
+
+            </div>
+
+        </section>
+<!-- VAULT OVERVIEW -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <p>
+                        VAULT OVERVIEW
+                    </p>
+
+                    <h2>
+                        At a glance
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <div class="quick-action">
+
+                    <div class="action-icon upload-icon">
+                        ▦
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong id="totalDocuments">
+                            0
+                        </strong>
+
+                        <small>
+                            Total documents
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-action">
+
+                    <div class="action-icon ai-icon">
+                        ◷
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong id="expiringDocuments">
+                            0
+                        </strong>
+
+                        <small>
+                            Expiring within 30 days
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="documents.html"
+                    class="quick-action">
+
+                    <div class="action-icon search-icon">
+                        ⌕
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong>
+                            My Documents
+                        </strong>
+
+                        <small>
+                            View your complete vault
+                        </small>
+
+                    </div>
+
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title">
+
+                <div>
+
+                    <p>
+                        QUICK ACTIONS
+                    </p>
+
+                    <h2>
+                        Manage your vault
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+
+                <a
+                    href="add-documents.html"
+                    class="quick-action">
+
+                    <div class="action-icon upload-icon">
+                        ↑
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong>
+                            Add document
+                        </strong>
+
+                        <small>
+                            Upload a new file
+                        </small>
+
+                    </div>
+
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="ai-assistant.html"
+                    class="quick-action">
+
+                    <div class="action-icon ai-icon">
+                        ✦
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong>
+                            AI Assistant
+                        </strong>
+
+                        <small>
+                            Get help with documents
+                        </small>
+
+                    </div>
+
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="search.html"
+                    class="quick-action">
+
+                    <div class="action-icon search-icon">
+                        ⌕
+                    </div>
+
+
+                    <div class="action-text">
+
+                        <strong>
+                            Find a document
+                        </strong>
+
+                        <small>
+                            Search your vault
+                        </small>
+
+                    </div>
+
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CATEGORIES -->
+
+        <section class="dashboard-section">
+
+            <div
+                class="section-title section-title-link">
+
+                <div>
+
+                    <p>
+                        YOUR LIBRARY
+                    </p>
+
+                    <h2>
+                        Document categories
+                    </h2>
+
+                </div>
+
+
+                <a href="documents.html">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <a
+                    href="documents.html"
+                    class="category-card identity-card">
+
+                    <div class="category-top">
+
+                        <div class="category-icon">
+                            ID
+                        </div>
+
+                        <span id="identityCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Identity
+                    </h3>
+
+                    <p>
+                        IDs & certificates
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="documents.html"
+                    class="category-card education-card">
+
+                    <div class="category-top">
+
+                        <div class="category-icon">
+                            EDU
+                        </div>
+
+                        <span id="educationCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Education
+                    </h3>
+
+                    <p>
+                        Certificates & marksheets
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="documents.html"
+                    class="category-card medical-card">
+
+                    <div class="category-top">
+
+                        <div class="category-icon">
+                            MED
+                        </div>
+
+                        <span id="medicalCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Medical
+                    </h3>
+
+                    <p>
+                        Reports & prescriptions
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="documents.html"
+                    class="category-card finance-card">
+
+                    <div class="category-top">
+
+                        <div class="category-icon">
+                            PER
+                        </div>
+
+                        <span id="personalCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Personal
+                    </h3>
+
+                    <p>
+                        Personal documents
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECENT DOCUMENTS -->
+
+        <section class="dashboard-section recent-section">
+
+            <div
+                class="section-title section-title-link">
+
+                <div>
+
+                    <p>
+                        RECENTLY ADDED
+                    </p>
+
+                    <h2>
+                        Recent documents
+                    </h2>
+
+                </div>
+
+
+                <a href="documents.html">
+                    View all →
+                </a>
+
+            </div>
+
+
+            <div
+                class="recent-documents"
+                id="recentDocuments">
+
+                <div class="document-row">
+
+                    <div class="document-type pdf-type">
+                        —
+                    </div>
+
+                    <div class="document-details">
+
+                        <strong>
+                            No documents yet
+                        </strong>
+
+                        <small>
+                            Add your first document to see it here.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                TrustVault
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                Your documents. Your space. Your trust.
+            </span>
+
+        </footer>
+<!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* ================= USER INFORMATION ================= */
+
+        function loadUser() {
+
+            const savedUser =
+                localStorage.getItem(
+                    "trustvaultUser"
+                );
+
+
+            if (!savedUser) {
+
+                window.location.href =
+                    "../index.html";
+
+                return;
+
+            }
+
+
+            try {
+
+                const user =
+                    JSON.parse(savedUser);
+
+
+                const name =
+                    user.name || "User";
+
+
+                const email =
+                    user.email || "Personal account";
+
+
+                const firstLetter =
+                    name
+                        .trim()
+                        .charAt(0)
+                        .toUpperCase();
+
+
+                document.getElementById(
+                    "dashboardUserName"
+                ).textContent =
+                    name;
+
+
+                document.getElementById(
+                    "dashboardAvatar"
+                ).textContent =
+                    firstLetter;
+
+
+                document.getElementById(
+                    "dashboardProfileName"
+                ).textContent =
+                    name;
+
+
+                document.getElementById(
+                    "dashboardProfileEmail"
+                ).textContent =
+                    email;
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Unable to load user information.",
+                    error
+                );
+
+            }
+
+        }
+
+
+
+        /* ================= DOCUMENTS ================= */
+
+        function getDocuments() {
+
+            const saved =
+                localStorage.getItem(
+                    "trustVaultDocuments"
+                );
+
+
+            if (!saved) {
+
+                return [];
+
+            }
+
+
+            try {
+
+                return JSON.parse(saved);
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+
+        function updateDashboard() {
+
+            const documents =
+                getDocuments();
+
+
+            /* TOTAL DOCUMENTS */
+
+            document.getElementById(
+                "totalDocuments"
+            ).textContent =
+                documents.length;
+
+
+
+            /* CATEGORY COUNTS */
+
+            document.getElementById(
+                "identityCount"
+            ).textContent =
+                documents.filter(
+                    function(doc) {
+
+                        return doc.category ===
+                            "identity";
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "educationCount"
+            ).textContent =
+                documents.filter(
+                    function(doc) {
+
+                        return doc.category ===
+                            "education";
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "medicalCount"
+            ).textContent =
+                documents.filter(
+                    function(doc) {
+
+                        return doc.category ===
+                            "medical";
+
+                    }
+                ).length;
+
+
+            document.getElementById(
+                "personalCount"
+            ).textContent =
+                documents.filter(
+                    function(doc) {
+
+                        return doc.category ===
+                            "personal";
+
+                    }
+                ).length;
+
+
+
+            /* EXPIRING DOCUMENTS */
+
+            let expiring = 0;
+
+
+            const today =
+                new Date();
+
+
+            today.setHours(
+                0,
+                0,
+                0,
+                0
+            );
+
+
+            const next30Days =
+                new Date();
+
+
+            next30Days.setDate(
+                next30Days.getDate() + 30
+            );
+
+
+            documents.forEach(
+                function(doc) {
+
+                    if (!doc.expiryDate) {
+
+                        return;
+
+                    }
+
+
+                    const expiry =
+                        new Date(
+                            doc.expiryDate +
+                            "T00:00:00"
+                        );
+
+
+                    if (
+                        expiry >= today &&
+                        expiry <= next30Days
+                    ) {
+
+                        expiring++;
+
+                    }
+
+                }
+            );
+
+
+            document.getElementById(
+                "expiringDocuments"
+            ).textContent =
+                expiring;
+
+
+
+            /* RECENT DOCUMENTS */
+
+            displayRecentDocuments(
+                documents
+            );
+
+        }
+
+
+
+        function displayRecentDocuments(
+            documents
+        ) {
+
+            const container =
+                document.getElementById(
+                    "recentDocuments"
+                );
+
+
+            if (
+                !documents ||
+                documents.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="document-row">
+
+                        <div class="document-type pdf-type">
+                            —
+                        </div>
+
+                        <div class="document-details">
+
+                            <strong>
+                                No documents yet
+                            </strong>
+
+                            <small>
+                                Add your first document
+                                to see it here.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            const recentDocuments =
+                documents
+                    .slice()
+                    .reverse()
+                    .slice(0, 3);
+
+
+            container.innerHTML = "";
+
+
+            recentDocuments.forEach(
+                function(doc) {
+
+                    const row =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    row.href =
+                        "documents.html";
+
+
+                    row.className =
+                        "document-row";
+
+
+                    const category =
+                        doc.category ||
+                        "other";
+
+
+                    const categoryName =
+                        category
+                            .charAt(0)
+                            .toUpperCase() +
+                        category.slice(1);
+
+
+                    row.innerHTML = `
+
+                        <div class="document-type pdf-type">
+                            DOC
+                        </div>
+
+                        <div class="document-details">
+
+                            <strong>
+                                ${doc.name || "Document"}
+                            </strong>
+
+                            <small>
+                                ${categoryName}
+                                · Saved document
+                            </small>
+
+                        </div>
+
+                        <span class="document-time">
+                            Recent
+                        </span>
+
+                        <span class="document-more">
+                            →
+                        </span>
+
+                    `;
+
+
+                    container.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        /* ================= REMINDERS ================= */
+
+        function openReminders() {
+
+            window.location.href =
+                "reminders.html";
+
+        }
+
+
+
+        /* ================= LOGOUT ================= */
+
+        function logout() {
+
+            localStorage.removeItem(
+                "trustvaultUser"
+            );
+
+        }
+
+
+
+        /* ================= START DASHBOARD ================= */
+
+        loadUser();
+
+        updateDashboard();
+
+    </script>
+
+
+    <!-- EXISTING SCRIPT -->
+
+    <script src="../js/script.js"></script>
+
+
+</body>
+
+</html>

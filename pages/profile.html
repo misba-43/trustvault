@@ -1,0 +1,1584 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>TrustVault | Profile</title>
+
+<link rel="stylesheet"
+      href="../css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<style>
+
+    .profile-picture-section {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+
+    .profile-picture {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        background: #17263a;
+        color: #e4cf9c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: bold;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .profile-picture-info h3 {
+        margin-bottom: 6px;
+        color: #17263a;
+    }
+
+    .profile-picture-info p {
+        color: #667384;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .profile-picture-button {
+        background: #17263a;
+        color: white;
+        border: none;
+        padding: 9px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .profile-picture-button:hover {
+        background: #0e1a2a;
+    }
+
+    #profilePictureInput {
+        display: none;
+    }
+
+    .profile-qr-card {
+        margin-top: 25px;
+    }
+
+    .qr-display-area {
+        text-align: center;
+    }
+
+    .qr-placeholder {
+        width: 200px;
+        min-height: 200px;
+        margin: 15px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f4ea;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        color: #667384;
+    }
+
+    .qr-placeholder img {
+        max-width: 180px;
+        max-height: 180px;
+    }
+
+    .qr-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    .qr-actions button {
+        background: #17263a;
+        color: white;
+        border: none;
+        padding: 9px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .qr-actions button:hover {
+        background: #0e1a2a;
+    }
+
+</style>
+
+</head><body class="dashboard-body"><aside class="sidebar">
+
+    <a href="dashboard.html"
+       class="sidebar-brand">
+
+        <div class="brand-mark">
+            ✓
+        </div>
+
+        <div class="brand-text">
+            Trust<span>Vault</span>
+        </div>
+
+    </a>
+
+    <nav class="sidebar-nav">
+
+        <p class="nav-heading">
+            MAIN
+        </p>
+
+        <a href="dashboard.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ⌂
+            </span>
+
+            Dashboard
+
+        </a>
+
+        <a href="documents.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ▦
+            </span>
+
+            My Documents
+
+        </a>
+
+        <a href="search.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ⌕
+            </span>
+
+            Search
+
+        </a>
+
+        <p class="nav-heading tools-heading">
+            TOOLS
+        </p>
+
+        <a href="add-documents.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ＋
+            </span>
+
+            Add Document
+
+        </a>
+
+        <a href="scan.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ▣
+            </span>
+
+            Scan & OCR
+
+        </a>
+
+        <a href="ai-assistant.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ✦
+            </span>
+
+            AI Assistant
+
+        </a>
+
+        <a href="reminders.html"
+           class="nav-link">
+
+            <span class="nav-symbol">
+                ♢
+            </span>
+
+            Reminders
+
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <a href="profile.html"
+           class="nav-link active">
+
+            <span class="nav-symbol">
+                ◯
+            </span>
+
+            Profile
+
+        </a>
+
+        <a href="../index.html"
+           class="nav-link logout-link">
+
+            <span class="nav-symbol">
+                ↪
+            </span>
+
+            Sign out
+
+        </a>
+
+    </div>
+
+</aside>
+
+<main class="dashboard-main">
+
+    <header class="dashboard-topbar">
+
+        <div>
+
+            <p class="dashboard-overline">
+                ACCOUNT SETTINGS
+            </p>
+
+            <h1>
+                Your <span>Profile.</span>
+            </h1>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <button
+                type="button"
+                class="notification-button">
+
+                ♢
+
+            </button>
+
+            <div class="profile-preview">
+
+                <div
+                    class="profile-avatar"
+                    id="topAvatar">
+
+                    U
+
+                </div>
+
+                <div class="profile-preview-text">
+
+                    <strong id="topProfileName">
+                        User
+                    </strong>
+
+                    <small>
+                        Personal account
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="profile-header-card">
+
+        <div
+            class="profile-large-avatar"
+            id="largeAvatar">
+
+            U
+
+        </div>
+
+        <div class="profile-header-info">
+
+            <p>
+                TRUSTVAULT MEMBER
+            </p>
+
+            <h2>
+                Your TrustVault profile
+            </h2>
+
+            <span>
+                Manage your information, security
+                and shareable profile details.
+            </span>
+
+        </div>
+
+    </section>
+<section class="profile-details-card">
+
+        <div class="profile-section-heading">
+
+            <p>
+                PROFILE PICTURE
+            </p>
+
+            <h2>
+                Your profile photo
+            </h2>
+
+        </div>
+
+        <div class="profile-picture-section">
+
+            <div
+                class="profile-picture"
+                id="profilePicture">
+
+                U
+
+            </div>
+
+            <div class="profile-picture-info">
+
+                <h3>
+                    Add a profile picture
+                </h3>
+
+                <p>
+                    Choose a photo to personalize
+                    your TrustVault profile.
+                </p>
+
+                <input
+                    type="file"
+                    id="profilePictureInput"
+                    accept="image/*">
+
+                <button
+                    type="button"
+                    class="profile-picture-button"
+                    onclick="document.getElementById('profilePictureInput').click()">
+
+                    Choose Photo
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="profile-details-card">
+
+        <div class="profile-section-heading">
+
+            <p>
+                PERSONAL INFORMATION
+            </p>
+
+            <h2>
+                Account details
+            </h2>
+
+        </div>
+
+        <form id="profileForm">
+
+            <div class="profile-form-grid">
+
+                <div class="profile-field">
+
+                    <label for="profileName">
+                        Full name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileName"
+                        placeholder="Enter your name">
+
+                </div>
+
+                <div class="profile-field">
+
+                    <label for="profileEmail">
+                        Email address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="profileEmail"
+                        placeholder="Enter your email">
+
+                </div>
+
+                <div class="profile-field">
+
+                    <label for="profilePhone">
+                        Phone number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="profilePhone"
+                        placeholder="Enter your phone number">
+
+                </div>
+
+                <div class="profile-field">
+
+                    <label for="profileRole">
+                        Profession / Role
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileRole"
+                        placeholder="Example: BCA Student">
+
+                </div>
+
+                <div class="profile-field">
+
+                    <label for="profileQualification">
+                        Qualification
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileQualification"
+                        placeholder="Example: Bachelor of Computer Applications">
+
+                </div>
+
+                <div class="profile-field">
+
+                    <label for="profileSkills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="profileSkills"
+                        placeholder="Example: Java, C, C++">
+
+                </div>
+
+            </div>
+
+            <button
+                type="submit"
+                class="profile-save-button">
+
+                Save changes
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="profile-qr-card">
+
+        <div class="profile-qr-info">
+
+            <p>
+                SHARE YOUR PROFILE
+            </p>
+
+            <h2>
+                My TrustVault QR
+            </h2>
+
+            <span>
+                Create a QR code containing the
+                profile information you choose to share.
+            </span>
+
+            <div class="qr-information-list">
+
+                <div>
+                    <strong>✓</strong>
+                    Name
+                </div>
+
+                <div>
+                    <strong>✓</strong>
+                    Contact information
+                </div>
+
+                <div>
+                    <strong>✓</strong>
+                    Qualification
+                </div>
+
+                <div>
+                    <strong>✓</strong>
+                    Skills
+                </div>
+
+            </div>
+
+            <small class="qr-security-note">
+
+                Only share information that you are
+                comfortable making available through
+                your QR profile.
+
+            </small>
+
+        </div>
+
+        <div class="qr-display-area">
+
+            <div
+                class="qr-placeholder"
+                id="qrCode">
+
+                <span>
+                    Generate your QR
+                </span>
+
+            </div>
+
+            <strong>
+                Your profile QR
+            </strong>
+
+            <small>
+                Scan to view shared information
+            </small>
+
+            <div class="qr-actions">
+
+                <button
+                    type="button"
+                    id="generateQR">
+
+                    Generate QR
+
+                </button>
+
+                <button
+                    type="button"
+                    id="downloadQR">
+
+                    Download
+
+                </button>
+
+                <button
+                    type="button"
+                    id="shareQR">
+
+                    Share
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+<section class="profile-security-card">
+
+        <div class="profile-section-heading">
+
+            <p>
+                SECURITY
+            </p>
+
+            <h2>
+                Keep your account protected
+            </h2>
+
+        </div>
+
+        <div class="security-option">
+
+            <div class="security-option-icon">
+                ✓
+            </div>
+
+            <div class="security-option-text">
+
+                <strong>
+                    Account protection
+                </strong>
+
+                <span>
+                    Your TrustVault account is protected
+                    with secure sign-in.
+                </span>
+
+            </div>
+
+            <span class="security-status">
+                Active
+            </span>
+
+        </div>
+
+        <div class="security-option">
+
+            <div class="security-option-icon">
+                •
+            </div>
+
+            <div class="security-option-text">
+
+                <strong>
+                    Password
+                </strong>
+
+                <span>
+                    Manage your account password.
+                </span>
+
+            </div>
+
+            <button
+                type="button"
+                class="security-action"
+                id="changePassword">
+
+                Change
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="profile-preferences-card">
+
+        <div class="profile-section-heading">
+
+            <p>
+                PREFERENCES
+            </p>
+
+            <h2>
+                Your preferences
+            </h2>
+
+        </div>
+
+        <div class="preference-row">
+
+            <div>
+
+                <strong>
+                    Document reminders
+                </strong>
+
+                <span>
+                    Receive reminders about important
+                    document expiry dates.
+                </span>
+
+            </div>
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="documentReminders"
+                    checked>
+
+                <span class="toggle-slider"></span>
+
+            </label>
+
+        </div>
+
+        <div class="preference-row">
+
+            <div>
+
+                <strong>
+                    Security notifications
+                </strong>
+
+                <span>
+                    Get notified about important
+                    account activity.
+                </span>
+
+            </div>
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="securityNotifications"
+                    checked>
+
+                <span class="toggle-slider"></span>
+
+            </label>
+
+        </div>
+
+        <div class="preference-row">
+
+            <div>
+
+                <strong>
+                    Dark mode
+                </strong>
+
+                <span>
+                    Switch between light and dark
+                    appearance.
+                </span>
+
+            </div>
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="darkModeToggle">
+
+                <span class="toggle-slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <footer class="dashboard-footer">
+
+        <span>
+            TrustVault
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            Your documents. Your space. Your trust.
+        </span>
+
+    </footer>
+
+</main>
+
+
+<script>
+
+    /* ================= USER DATA ================= */
+
+    let loggedInUser = null;
+
+    try {
+
+        loggedInUser =
+            JSON.parse(
+                localStorage.getItem("trustvaultUser")
+            );
+
+    }
+
+    catch (error) {
+
+        loggedInUser = null;
+
+    }
+
+
+    /* ================= PROFILE FIELDS ================= */
+
+    const profileFields = [
+        "profileName",
+        "profileEmail",
+        "profilePhone",
+        "profileRole",
+        "profileQualification",
+        "profileSkills"
+    ];
+
+
+    /* ================= LOAD PROFILE ================= */
+
+    function loadProfile() {
+
+        let savedName =
+            localStorage.getItem("profileName");
+
+        let savedEmail =
+            localStorage.getItem("profileEmail");
+
+
+        /*
+         * If the profile has not been saved yet,
+         * use the logged-in account information.
+         */
+
+        if (
+            !savedName &&
+            loggedInUser
+        ) {
+
+            savedName =
+                loggedInUser.name ||
+                loggedInUser.fullName ||
+                "";
+
+        }
+
+
+        if (
+            !savedEmail &&
+            loggedInUser
+        ) {
+
+            savedEmail =
+                loggedInUser.email ||
+                "";
+
+        }
+
+
+        if (savedName) {
+
+            document
+                .getElementById("profileName")
+                .value =
+                savedName;
+
+            localStorage.setItem(
+                "profileName",
+                savedName
+            );
+
+        }
+
+
+        if (savedEmail) {
+
+            document
+                .getElementById("profileEmail")
+                .value =
+                savedEmail;
+
+            localStorage.setItem(
+                "profileEmail",
+                savedEmail
+            );
+
+        }
+
+
+        profileFields.forEach(
+            function(id) {
+
+                const savedValue =
+                    localStorage.getItem(id);
+
+                if (
+                    savedValue !== null &&
+                    id !== "profileName" &&
+                    id !== "profileEmail"
+                ) {
+
+                    document
+                        .getElementById(id)
+                        .value =
+                        savedValue;
+
+                }
+
+            }
+        );
+
+
+        loadProfilePicture();
+
+        updateProfileName();
+
+    }
+
+
+    /* ================= SAVE PROFILE ================= */
+
+    function saveProfile() {
+
+        profileFields.forEach(
+            function(id) {
+
+                const element =
+                    document.getElementById(id);
+
+                const value =
+                    element.value.trim();
+
+                localStorage.setItem(
+                    id,
+                    value
+                );
+
+            }
+        );
+
+
+        /*
+         * Also update the locally stored
+         * logged-in user name.
+         */
+
+        if (loggedInUser) {
+
+            loggedInUser.name =
+                document
+                    .getElementById("profileName")
+                    .value
+                    .trim();
+
+            loggedInUser.email =
+                document
+                    .getElementById("profileEmail")
+                    .value
+                    .trim();
+
+
+            localStorage.setItem(
+                "trustvaultUser",
+                JSON.stringify(loggedInUser)
+            );
+
+        }
+
+
+        updateProfileName();
+
+    }
+
+
+    /* ================= UPDATE NAME ================= */
+
+    function updateProfileName() {
+
+        const name =
+            document
+                .getElementById("profileName")
+                .value
+                .trim();
+
+
+        const displayName =
+            name || "User";
+
+
+        document
+            .getElementById("topProfileName")
+            .textContent =
+            displayName;
+
+
+        const firstLetter =
+            displayName
+                .charAt(0)
+                .toUpperCase();
+
+
+        document
+            .getElementById("topAvatar")
+            .textContent =
+            firstLetter;
+
+
+        document
+            .getElementById("largeAvatar")
+            .textContent =
+            firstLetter;
+
+    }
+
+
+    /* ================= SAVE BUTTON ================= */
+
+    document
+        .getElementById("profileForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                saveProfile();
+
+                alert(
+                    "Profile information saved successfully."
+                );
+
+            }
+        );
+
+
+    /* ================= PROFILE PICTURE ================= */
+
+    document
+        .getElementById("profilePictureInput")
+        .addEventListener(
+            "change",
+            function(event) {
+
+                const file =
+                    event.target.files[0];
+
+
+                if (!file) {
+                    return;
+                }
+
+
+                if (
+                    !file.type.startsWith("image/")
+                ) {
+
+                    alert(
+                        "Please select an image file."
+                    );
+
+                    return;
+
+                }
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function(e) {
+
+                        const imageData =
+                            e.target.result;
+
+
+                        localStorage.setItem(
+                            "trustvaultProfilePicture",
+                            imageData
+                        );
+
+
+                        showProfilePicture(
+                            imageData
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+
+    function showProfilePicture(imageData) {
+
+        const profilePicture =
+            document.getElementById(
+                "profilePicture"
+            );
+
+
+        profilePicture.innerHTML = "";
+
+
+        const image =
+            document.createElement("img");
+
+
+        image.src =
+            imageData;
+
+
+        profilePicture.appendChild(
+            image
+        );
+
+
+        document
+            .getElementById("topAvatar")
+            .innerHTML = "";
+
+
+        const topImage =
+            document.createElement("img");
+
+
+        topImage.src =
+            imageData;
+
+
+        topImage.style.width =
+            "100%";
+
+        topImage.style.height =
+            "100%";
+
+        topImage.style.objectFit =
+            "cover";
+
+
+        document
+            .getElementById("topAvatar")
+            .appendChild(
+                topImage
+            );
+
+
+        document
+            .getElementById("largeAvatar")
+            .innerHTML = "";
+
+
+        const largeImage =
+            document.createElement("img");
+
+
+        largeImage.src =
+            imageData;
+
+
+        largeImage.style.width =
+            "100%";
+
+        largeImage.style.height =
+            "100%";
+
+        largeImage.style.objectFit =
+            "cover";
+
+
+        document
+            .getElementById("largeAvatar")
+            .appendChild(
+                largeImage
+            );
+
+    }
+
+
+    function loadProfilePicture() {
+
+        const savedPicture =
+            localStorage.getItem(
+                "trustvaultProfilePicture"
+            );
+
+
+        if (savedPicture) {
+
+            showProfilePicture(
+                savedPicture
+            );
+
+        }
+
+    }
+/* ================= QR CODE ================= */
+
+    let qrGenerated = false;
+
+
+    document
+        .getElementById("generateQR")
+        .addEventListener(
+            "click",
+            function() {
+
+                const name =
+                    document
+                        .getElementById("profileName")
+                        .value
+                        .trim();
+
+                const email =
+                    document
+                        .getElementById("profileEmail")
+                        .value
+                        .trim();
+
+                const phone =
+                    document
+                        .getElementById("profilePhone")
+                        .value
+                        .trim();
+
+                const role =
+                    document
+                        .getElementById("profileRole")
+                        .value
+                        .trim();
+
+                const qualification =
+                    document
+                        .getElementById("profileQualification")
+                        .value
+                        .trim();
+
+                const skills =
+                    document
+                        .getElementById("profileSkills")
+                        .value
+                        .trim();
+
+
+                if (!name) {
+
+                    alert(
+                        "Please enter your name first."
+                    );
+
+                    return;
+
+                }
+
+
+                const qrContent =
+                    "TrustVault Profile\n\n" +
+                    "Name: " + name +
+                    "\nEmail: " +
+                    (email || "Not provided") +
+                    "\nPhone: " +
+                    (phone || "Not provided") +
+                    "\nRole: " +
+                    (role || "Not provided") +
+                    "\nQualification: " +
+                    (qualification || "Not provided") +
+                    "\nSkills: " +
+                    (skills || "Not provided");
+
+
+                const qrContainer =
+                    document.getElementById(
+                        "qrCode"
+                    );
+
+
+                qrContainer.innerHTML = "";
+
+
+                new QRCode(
+                    qrContainer,
+                    {
+                        text: qrContent,
+                        width: 180,
+                        height: 180
+                    }
+                );
+
+
+                qrGenerated = true;
+
+            }
+        );
+
+
+    /* ================= DOWNLOAD QR ================= */
+
+    document
+        .getElementById("downloadQR")
+        .addEventListener(
+            "click",
+            function() {
+
+                if (!qrGenerated) {
+
+                    alert(
+                        "Please generate your QR first."
+                    );
+
+                    return;
+
+                }
+
+
+                const qrImage =
+                    document.querySelector(
+                        "#qrCode img"
+                    );
+
+
+                if (!qrImage) {
+
+                    alert(
+                        "QR code is not ready yet."
+                    );
+
+                    return;
+
+                }
+
+
+                const link =
+                    document.createElement("a");
+
+
+                link.href =
+                    qrImage.src;
+
+
+                link.download =
+                    "trustvault-profile-qr.png";
+
+
+                link.click();
+
+            }
+        );
+
+
+    /* ================= SHARE QR ================= */
+
+    document
+        .getElementById("shareQR")
+        .addEventListener(
+            "click",
+            async function() {
+
+                if (!qrGenerated) {
+
+                    alert(
+                        "Please generate your QR first."
+                    );
+
+                    return;
+
+                }
+
+
+                const name =
+                    document
+                        .getElementById("profileName")
+                        .value
+                        .trim();
+
+
+                if (navigator.share) {
+
+                    try {
+
+                        await navigator.share({
+
+                            title:
+                                "My TrustVault Profile",
+
+                            text:
+                                "My TrustVault profile: " +
+                                (name || "User")
+
+                        });
+
+                    }
+
+                    catch (error) {
+
+                        console.log(
+                            "Sharing cancelled."
+                        );
+
+                    }
+
+                }
+
+                else {
+
+                    alert(
+                        "Sharing is not supported on this device."
+                    );
+
+                }
+
+            }
+        );
+
+
+    /* ================= PASSWORD ================= */
+
+    document
+        .getElementById("changePassword")
+        .addEventListener(
+            "click",
+            function() {
+
+                alert(
+                    "Password change will be connected to the backend later."
+                );
+
+            }
+        );
+
+
+    /* ================= REMINDERS ================= */
+
+    const documentReminders =
+        document.getElementById(
+            "documentReminders"
+        );
+
+
+    const savedReminderSetting =
+        localStorage.getItem(
+            "documentReminders"
+        );
+
+
+    if (
+        savedReminderSetting !== null
+    ) {
+
+        documentReminders.checked =
+            savedReminderSetting === "true";
+
+    }
+
+
+    documentReminders.addEventListener(
+        "change",
+        function() {
+
+            localStorage.setItem(
+                "documentReminders",
+                documentReminders.checked
+            );
+
+        }
+    );
+
+
+    /* ================= SECURITY NOTIFICATIONS ================= */
+
+    const securityNotifications =
+        document.getElementById(
+            "securityNotifications"
+        );
+
+
+    const savedSecuritySetting =
+        localStorage.getItem(
+            "securityNotifications"
+        );
+
+
+    if (
+        savedSecuritySetting !== null
+    ) {
+
+        securityNotifications.checked =
+            savedSecuritySetting === "true";
+
+    }
+
+
+    securityNotifications.addEventListener(
+        "change",
+        function() {
+
+            localStorage.setItem(
+                "securityNotifications",
+                securityNotifications.checked
+            );
+
+        }
+    );
+
+
+    /* ================= DARK MODE ================= */
+
+    const darkModeToggle =
+        document.getElementById(
+            "darkModeToggle"
+        );
+
+
+    const savedDarkMode =
+        localStorage.getItem(
+            "trustvaultDarkMode"
+        );
+
+
+    if (
+        savedDarkMode === "true"
+    ) {
+
+        document.body.classList.add(
+            "dark-mode"
+        );
+
+        darkModeToggle.checked = true;
+
+    }
+
+
+    darkModeToggle.addEventListener(
+        "change",
+        function() {
+
+            if (
+                darkModeToggle.checked
+            ) {
+
+                document.body.classList.add(
+                    "dark-mode"
+                );
+
+                localStorage.setItem(
+                    "trustvaultDarkMode",
+                    "true"
+                );
+
+            }
+
+            else {
+
+                document.body.classList.remove(
+                    "dark-mode"
+                );
+
+                localStorage.setItem(
+                    "trustvaultDarkMode",
+                    "false"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ================= START ================= */
+
+    loadProfile();
+
+</script>
+
+</body></html>

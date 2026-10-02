@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>TrustVault - My Documents</title>
+
+
+<style>
+
+:root {
+
+    --navy: #17263a;
+    --ivory: #f7f4ea;
+    --white: #fcfaf3;
+    --gold: #c8a45d;
+
+    --identity: #5576a3;
+    --medical: #8b657d;
+    --education: #71885d;
+    --personal: #a77955;
+    --other: #777b85;
+
+}
+
+* {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: var(--ivory);
+
+    color: #1a293b;
+
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 240px;
+    height: 100vh;
+
+    background: var(--navy);
+
+    padding: 28px 18px;
+
+    color: white;
+
+}
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 40px;
+
+    padding-left: 10px;
+
+}
+
+.logo-icon {
+
+    width: 40px;
+    height: 40px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo-name {
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+}
+
+.menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+.menu a {
+
+    color: #dce3eb;
+
+    text-decoration: none;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+
+}
+
+.menu a:hover,
+.menu a.active {
+
+    background:
+        rgba(200,164,93,0.18);
+
+    color: #e4cf9c;
+
+}
+
+
+/* MAIN */
+
+.main {
+
+    margin-left: 240px;
+
+    padding: 35px 45px;
+
+}
+
+h1 {
+
+    color: var(--navy);
+
+    margin-bottom: 6px;
+
+}
+
+.subtitle {
+
+    color: #667384;
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+
+}
+
+.add-button {
+
+    display: inline-block;
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 11px 17px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* SEARCH */
+
+.search {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    background: var(--white);
+
+    margin-bottom: 30px;
+
+}
+
+
+/* ALL DOCUMENTS */
+
+.section-title {
+
+    color: var(--navy);
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+
+}
+
+.all-documents {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 40px;
+
+}
+
+.document-card {
+
+    background: var(--white);
+
+    border: 1px solid #ddd;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+}
+
+.document-icon {
+
+    width: 40px;
+    height: 40px;
+
+    background:
+        rgba(200,164,93,0.16);
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+}
+
+.document-card h3 {
+
+    color: var(--navy);
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+}
+
+.document-card p {
+
+    color: #667384;
+
+    font-size: 11px;
+
+}
+
+
+/* BUTTONS */
+
+.document-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 12px;
+
+}
+
+.view-button,
+.download-button,
+.delete-button {
+
+    border: none;
+
+    background: var(--navy);
+
+    color: white;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.view-button:hover,
+.download-button:hover,
+.delete-button:hover {
+
+    background: var(--navy-dark);
+
+}
+
+/* CATEGORIES */
+
+.section-title.categories-title {
+
+    margin-top: 10px;
+
+}
+
+.categories {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+}
+
+.category {
+
+    background: var(--white);
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    border: 1px solid #ddd;
+
+}
+
+.category-header {
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+}
+
+.icon {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+
+}
+
+.identity .icon {
+
+    background: var(--identity);
+
+}
+
+.medical .icon {
+
+    background: var(--medical);
+
+}
+
+.education .icon {
+
+    background: var(--education);
+
+}
+
+.personal .icon {
+
+    background: var(--personal);
+
+}
+
+.other .icon {
+
+    background: var(--other);
+
+}
+
+.category h2 {
+
+    font-size: 17px;
+
+    color: var(--navy);
+
+}
+
+.category p {
+
+    color: #667384;
+
+    font-size: 11px;
+
+    margin-top: 4px;
+
+}
+
+.arrow {
+
+    margin-left: auto;
+
+}
+
+.document-list {
+
+    display: none;
+
+    padding: 0 20px 18px;
+
+}
+
+.category.open .document-list {
+
+    display: block;
+
+}
+
+.document {
+
+    padding: 13px 5px;
+
+    border-top: 1px solid #eee;
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+.document-name {
+
+    color: var(--navy);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+.document-date {
+
+    color: #667384;
+
+    font-size: 10px;
+
+    margin-top: 4px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .all-documents {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+@media(max-width:700px) {
+
+    .sidebar {
+
+        position: static;
+
+        width: 100%;
+
+        height: auto;
+
+    }
+
+    .main {
+
+        margin-left: 0;
+
+        padding: 25px 20px;
+
+    }
+
+    .all-documents,
+    .categories {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            ✦
+        </div>
+
+        <div class="logo-name">
+            TrustVault
+        </div>
+
+    </div>
+
+
+    <nav class="menu">
+
+        <a href="dashboard.html">
+            ⌂ Dashboard
+        </a>
+
+        <a
+            href="documents.html"
+            class="active">
+
+            ▣ My Documents
+
+        </a>
+
+        <a href="add-documents.html">
+
+            ＋ Add Documents
+
+        </a>
+
+        <a href="search.html">
+
+            ⌕ Search
+
+        </a>
+
+        <a href="reminders.html">
+
+            ◷ Reminders
+
+        </a>
+
+        <a href="ai-assistant.html">
+
+            ✦ AI Assistant
+
+        </a>
+
+        <a href="profile.html">
+
+            ○ Profile
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <h1>
+        My Documents
+    </h1>
+
+    <p class="subtitle">
+        All your important documents in one place.
+    </p>
+
+
+    <a
+        href="add-documents.html"
+        class="add-button">
+
+        + Add Document
+
+    </a>
+
+
+    <input
+        type="text"
+        id="searchInput"
+        class="search"
+        placeholder="Search documents..."
+        oninput="searchDocuments()"
+    >
+
+
+    <!-- ALL DOCUMENTS -->
+
+    <h2 class="section-title">
+
+        All Saved Documents
+
+    </h2>
+
+
+    <div
+        class="all-documents"
+        id="allDocuments">
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <h2
+        class="section-title categories-title">
+
+        Categories
+
+    </h2>
+
+
+    <div class="categories">
+
+
+        <!-- IDENTITY -->
+
+        <div class="category identity">
+
+            <button
+                class="category-header"
+                onclick="openCategory(this)">
+
+                <div class="icon">
+                    🪪
+                </div>
+
+                <div>
+
+                    <h2>
+                        Identity
+                    </h2>
+
+                    <p>
+                        Passport, Voter ID, Aadhaar
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <div
+                class="document-list"
+                id="identityList">
+
+            </div>
+
+        </div>
+
+
+        <!-- MEDICAL -->
+
+        <div class="category medical">
+
+            <button
+                class="category-header"
+                onclick="openCategory(this)">
+
+                <div class="icon">
+                    🏥
+                </div>
+
+                <div>
+
+                    <h2>
+                        Medical Reports
+                    </h2>
+
+                    <p>
+                        Medical reports and certificates
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <div
+                class="document-list"
+                id="medicalList">
+
+            </div>
+
+        </div>
+
+
+        <!-- EDUCATION -->
+
+        <div class="category education">
+
+            <button
+                class="category-header"
+                onclick="openCategory(this)">
+
+                <div class="icon">
+                    🎓
+                </div>
+
+                <div>
+
+                    <h2>
+                        Education
+                    </h2>
+
+                    <p>
+                        Marks cards and certificates
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <div
+                class="document-list"
+                id="educationList">
+
+            </div>
+
+        </div>
+
+
+        <!-- PERSONAL -->
+
+        <div class="category personal">
+
+            <button
+                class="category-header"
+                onclick="openCategory(this)">
+
+                <div class="icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2>
+                        Personal
+                    </h2>
+
+                    <p>
+                        Personal documents
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <div
+                class="document-list"
+                id="personalList">
+
+            </div>
+
+        </div>
+
+
+        <!-- OTHER -->
+
+        <div class="category other">
+
+            <button
+                class="category-header"
+                onclick="openCategory(this)">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <div>
+
+                    <h2>
+                        Other
+                    </h2>
+
+                    <p>
+                        Other important documents
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    ▼
+                </span>
+
+            </button>
+
+
+            <div
+                class="document-list"
+                id="otherList">
+
+            </div>
+
+        </div>
+
+    </div>
+<!-- JAVASCRIPT -->
+
+<script>
+
+
+/* GET SAVED DOCUMENTS */
+
+function getDocuments() {
+
+    const saved =
+        localStorage.getItem(
+            "trustVaultDocuments"
+        );
+
+    if (!saved) {
+        return [];
+    }
+
+    try {
+
+        return JSON.parse(saved);
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* FORMAT DATE */
+
+function formatDate(date) {
+
+    if (!date) {
+
+        return "No expiry date";
+
+    }
+
+    return new Date(
+        date + "T00:00:00"
+    ).toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* CATEGORY LIST */
+
+function getList(category) {
+
+    if (category === "identity") {
+        return "identityList";
+    }
+
+    if (category === "medical") {
+        return "medicalList";
+    }
+
+    if (category === "education") {
+        return "educationList";
+    }
+
+    if (category === "personal") {
+        return "personalList";
+    }
+
+    return "otherList";
+
+}
+
+
+/* ESCAPE HTML */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text || "";
+
+    return div.innerHTML;
+
+}
+
+
+/* DISPLAY DOCUMENTS */
+
+function displayDocuments() {
+
+    const documents =
+        getDocuments();
+
+
+    const all =
+        document.getElementById(
+            "allDocuments"
+        );
+
+
+    all.innerHTML = "";
+
+
+    const lists = [
+
+        "identityList",
+        "medicalList",
+        "educationList",
+        "personalList",
+        "otherList"
+
+    ];
+
+
+    lists.forEach(function(id) {
+
+        document
+            .getElementById(id)
+            .innerHTML = "";
+
+    });
+
+
+    documents.forEach(function(doc) {
+
+
+        /* ALL DOCUMENTS CARD */
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "document-card";
+
+
+        card.innerHTML = `
+
+            <div class="document-icon">
+                📄
+            </div>
+
+            <h3>
+                ${escapeHTML(doc.name)}
+            </h3>
+
+            <p>
+                Expiry:
+                ${formatDate(doc.expiryDate)}
+            </p>
+
+            <div class="document-actions">
+
+                <button
+                    class="view-button"
+                    onclick="viewDocument(${doc.id})">
+
+                    View
+
+                </button>
+
+                <button
+                    class="download-button"
+                    onclick="downloadDocument(${doc.id})">
+
+                    Download
+
+                </button>
+
+                <button
+                    class="delete-button"
+                    onclick="deleteDocument(${doc.id})">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        all.appendChild(card);
+
+
+        /* CATEGORY */
+
+        const list =
+            document.getElementById(
+                getList(doc.category)
+            );
+
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "document";
+
+
+        item.innerHTML = `
+
+            <div>
+
+                <div class="document-name">
+
+                    ${escapeHTML(doc.name)}
+
+                </div>
+
+                <div class="document-date">
+
+                    Expiry:
+                    ${formatDate(doc.expiryDate)}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+/* OPEN CATEGORY */
+
+function openCategory(button) {
+
+    const category =
+        button.parentElement;
+
+    category.classList.toggle("open");
+
+}
+
+
+/* SEARCH DOCUMENTS */
+
+function searchDocuments() {
+
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const documents =
+        getDocuments();
+
+
+    const all =
+        document.getElementById(
+            "allDocuments"
+        );
+
+
+    all.innerHTML = "";
+
+
+    const results =
+        documents.filter(function(doc) {
+
+            const name =
+                (doc.name || "")
+                .toLowerCase();
+
+            const category =
+                (doc.category || "")
+                .toLowerCase();
+
+            return (
+                name.includes(search) ||
+                category.includes(search)
+            );
+
+        });
+
+
+    results.forEach(function(doc) {
+
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "document-card";
+
+
+        card.innerHTML = `
+
+            <div class="document-icon">
+                📄
+            </div>
+
+            <h3>
+                ${escapeHTML(doc.name)}
+            </h3>
+
+            <p>
+                Expiry:
+                ${formatDate(doc.expiryDate)}
+            </p>
+
+            <div class="document-actions">
+
+                <button
+                    class="view-button"
+                    onclick="viewDocument(${doc.id})">
+
+                    View
+
+                </button>
+
+                <button
+                    class="download-button"
+                    onclick="downloadDocument(${doc.id})">
+
+                    Download
+
+                </button>
+
+                <button
+                    class="delete-button"
+                    onclick="deleteDocument(${doc.id})">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        all.appendChild(card);
+
+    });
+
+}
+
+
+/* VIEW DOCUMENT */
+
+function viewDocument(id) {
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!doc) {
+
+        alert(
+            "Document not found."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "Document: " +
+        doc.name +
+
+        "\n\nCategory: " +
+        doc.category +
+
+        "\n\nExpiry Date: " +
+        formatDate(doc.expiryDate) +
+
+        "\n\nFile: " +
+        (
+            doc.fileName ||
+            "No file selected"
+        )
+
+    );
+
+}
+
+
+/* DOWNLOAD DOCUMENT */
+
+function downloadDocument(id) {
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!doc) {
+
+        alert(
+            "Document not found."
+        );
+
+        return;
+
+    }
+
+
+    if (!doc.fileName) {
+
+        alert(
+            "No uploaded file is available for this document."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+
+        "Download feature will be connected to secure file storage when the backend is added."
+
+    );
+
+}
+
+
+/* DELETE DOCUMENT */
+
+function deleteDocument(id) {
+
+    const documents =
+        getDocuments();
+
+
+    const doc =
+        documents.find(function(item) {
+
+            return item.id === id;
+
+        });
+
+
+    if (!doc) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+
+            "Are you sure you want to delete \"" +
+            doc.name +
+            "\"?"
+
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    const updatedDocuments =
+        documents.filter(function(item) {
+
+            return item.id !== id;
+
+        });
+
+
+    localStorage.setItem(
+
+        "trustVaultDocuments",
+
+        JSON.stringify(
+            updatedDocuments
+        )
+
+    );
+
+
+    displayDocuments();
+
+
+    searchDocuments();
+
+
+    alert(
+        "Document deleted successfully."
+    );
+
+}
+
+
+/* START */
+
+displayDocuments();
+
+
+</script>
+
+</body>
+
+</html>

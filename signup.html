@@ -1,0 +1,422 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TrustVault - Create Account</title>
+
+<style>
+    :root {
+        --navy: #17263a;
+        --navy-dark: #0e1a2a;
+        --navy-soft: #34465b;
+
+        --ivory: #f7f4ea;
+        --ivory-light: #fcfaf3;
+
+        --gold: #c8a45d;
+        --gold-light: #e4cf9c;
+
+        --text: #1a293b;
+        --text-soft: #667384;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: var(--ivory);
+        color: var(--text);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .signup-container {
+        width: 100%;
+        max-width: 460px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .logo-icon {
+        width: 55px;
+        height: 55px;
+        margin: auto;
+
+        background: var(--navy);
+        color: var(--gold-light);
+
+        border-radius: 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .brand {
+        margin-top: 10px;
+        font-size: 29px;
+        font-weight: 800;
+        color: var(--navy);
+    }
+
+    .tagline {
+        margin-top: 4px;
+        font-size: 13px;
+        color: var(--text-soft);
+    }
+
+    .card {
+        background: var(--ivory-light);
+        border: 1px solid rgba(23, 38, 58, 0.10);
+        border-radius: 22px;
+        padding: 32px;
+
+        box-shadow: 0 15px 40px rgba(23, 38, 58, 0.10);
+    }
+
+    .title {
+        font-size: 27px;
+        font-weight: 750;
+        color: var(--navy);
+        margin-bottom: 7px;
+    }
+
+    .description {
+        font-size: 14px;
+        color: var(--text-soft);
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 7px;
+    }
+
+    input {
+        width: 100%;
+        padding: 13px 14px;
+        margin-bottom: 16px;
+
+        border: 1px solid rgba(23, 38, 58, 0.18);
+        border-radius: 10px;
+
+        background: white;
+        color: var(--text);
+
+        font-size: 14px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(200, 164, 93, 0.15);
+    }
+
+    .create-btn {
+        width: 100%;
+        padding: 14px;
+
+        border: none;
+        border-radius: 10px;
+
+        background: var(--navy);
+        color: white;
+
+        font-size: 15px;
+        font-weight: 700;
+
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .create-btn:hover {
+        background: var(--navy-dark);
+    }
+
+    .login-text {
+        text-align: center;
+        margin-top: 20px;
+
+        font-size: 14px;
+        color: var(--text-soft);
+    }
+
+    .login-text a {
+        color: var(--gold);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .login-text a:hover {
+        color: var(--navy);
+        text-decoration: underline;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+
+        font-size: 12px;
+        color: var(--text-soft);
+    }
+</style>
+
+</head><body><div class="signup-container">
+
+    <div class="logo">
+
+        <div class="logo-icon">✓</div>
+
+        <div class="brand">
+            TrustVault
+        </div>
+
+        <div class="tagline">
+            Your personal document space
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="title">
+            Create your account
+        </div>
+
+        <div class="description">
+            Create your TrustVault account and keep your important information organized.
+        </div>
+
+
+        <form id="signupForm">
+
+            <label for="name">
+                Full name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label for="email">
+                Email address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label for="phone">
+                Phone number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Create a password"
+                required
+            >
+
+
+            <label for="confirmPassword">
+                Confirm password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                required
+            >
+
+
+            <button
+                class="create-btn"
+                type="submit">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <div class="login-text">
+
+            Already have an account?
+
+            <a href="index.html">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        TrustVault • Your documents. Your space. Your trust.
+    </div>
+
+</div>
+
+
+<script>
+
+    document
+        .getElementById("signupForm")
+        .addEventListener("submit", createAccount);
+
+
+    async function createAccount(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+        if (password !== confirmPassword) {
+
+            alert("Passwords do not match.");
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/api/signup",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            password: password
+
+                        })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                alert(
+                    data.message ||
+                    "Account creation failed."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Account created successfully!"
+            );
+
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to connect to TrustVault server. Make sure the backend is running."
+            );
+
+        }
+
+    }
+
+</script>
+
+</body></html>
