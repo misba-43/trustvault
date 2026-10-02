@@ -3,13 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const path = require("path");
-const OpenAI = require("openai");
 require("dotenv").config();
 
 const User = require("./models/user");
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
 
 const app = express();
 
